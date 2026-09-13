@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معايير جودة الدعم الفني | rewaa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#00ABAB;
+  --teal-tint:#E7F7F7;
+  --teal-mist:#C7ECEC;
+  --navy:#00205C;
+  --gold:#F6CA59;
+  --gold-tint:#FDF3DE;
+  --bluegrey:#69879C;
+  --slate:#434F58;
+  --red:#C24A42;
+  --red-tint:#FBEAE8;
+  --bg:#EAF7F7;
+  --card:#FFFFFF;
+  --line:#E3E9E8;
+  --line-strong:#CFDAD8;
+  --text:#1C2B2E;
+  --text-muted:#5C6E72;
+  --text-faint:#93A5A3;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Poppins','Noto Kufi Arabic',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.65;
+}
+.wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+
+/* ---------- HERO ---------- */
+header{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  background:linear-gradient(115deg, #063D3E 0%, #00777A 50%, #00ABAB 100%);
+  padding:32px 32px 26px;
+  margin-top:24px;
+}
+.hero-decor{ position:absolute; inset:0; z-index:0; overflow:hidden; border-radius:20px; pointer-events:none; }
+.hero-decor svg{ position:absolute; top:-40%; inset-inline-start:-10%; height:220%; width:auto; opacity:0.5; }
+header > *{ position:relative; z-index:1; }
+
+.hero-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px; flex-wrap:wrap; }
+.hero-top-left{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.hero-logo{ height:22px; width:auto; display:block; }
+.hero-eyebrow{ font-size:12.5px; font-weight:600; color:rgba(255,255,255,0.7); }
+.hero-eyebrow-divider{ width:1px; height:14px; background:rgba(255,255,255,0.3); }
+.lang-pill{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:'Poppins','Noto Kufi Arabic',sans-serif;
+  font-size:12.5px; font-weight:700;
+  color:#fff;
+  background:rgba(255,255,255,0.18);
+  border:1px solid rgba(255,255,255,0.45);
+  padding:7px 16px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:background .15s ease;
+  flex-shrink:0;
+}
+.lang-pill:hover{ background:rgba(255,255,255,0.3); }
+
+h1{ font-weight:800; font-size:clamp(24px,4vw,32px); color:#fff; margin:0 0 8px; line-height:1.35; }
+.hero-byline{ color:rgba(255,255,255,0.82); font-size:13.5px; font-weight:600; margin:0 0 12px; }
+.subtitle{ color:rgba(255,255,255,0.78); font-size:14.5px; max-width:640px; margin:0; }
+
+.hero-divider{ height:1px; background:rgba(255,255,255,0.18); margin:22px 0 20px; }
+.hero-stats{ display:flex; gap:0; flex-wrap:wrap; }
+.hstat{ padding:0 22px; border-inline-end:1px solid rgba(255,255,255,0.18); }
+.hstat:first-child{ padding-inline-start:0; }
+.hstat:last-child{ border-inline-end:none; }
+.hstat .n{ font-family:'Poppins',sans-serif; font-weight:800; font-size:24px; color:#fff; line-height:1; }
+.hstat .l{ margin-top:6px; font-size:12px; font-weight:600; color:rgba(255,255,255,0.7); }
+
+/* ---------- TABS (pill style) ---------- */
+.tabs{
+  display:flex; gap:10px; flex-wrap:wrap;
+  margin:26px 0 22px;
+}
+.tabbtn{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--card);
+  border:1px solid var(--line-strong);
+  color:var(--text);
+  font-family:'Poppins','Noto Kufi Arabic',sans-serif;
+  font-size:14px; font-weight:600;
+  padding:10px 18px;
+  border-radius:999px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+.tabbtn:hover{ border-color:var(--teal); }
+.tabbtn.on{ background:var(--teal); border-color:var(--teal); color:#fff; }
+.tabbtn .ic{ font-size:15px; }
+
+/* ---------- PANEL / OVERVIEW CARD ---------- */
+.panel{ display:none; }
+.panel.on{ display:block; }
+
+.overview-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:26px 28px;
+  display:flex; align-items:center; gap:24px;
+  margin-bottom:22px;
+  flex-wrap:wrap;
+}
+.ring{
+  width:96px; height:96px; border-radius:50%;
+  border:3px solid var(--teal);
+  background:var(--teal-tint);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.ring .n{ font-family:'Poppins',sans-serif; font-weight:800; font-size:22px; color:var(--navy); line-height:1; }
+.ring .l{ font-size:11.5px; color:var(--teal); font-weight:600; margin-top:3px; }
+.ring.crit{ border-color:var(--red); background:var(--red-tint); }
+.ring.crit .l{ color:var(--red); }
+.ring.bonus{ border-color:var(--gold); background:var(--gold-tint); }
+.ring.bonus .n, .ring.bonus .l{ color:#8A6A1E; }
+
+.overview-main{ flex:1; min-width:220px; }
+.overview-title{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+.overview-title h2{ font-size:19px; font-weight:700; color:var(--navy); margin:0; }
+.overview-title .ic{ font-size:18px; }
+.overview-desc{ font-size:14px; color:var(--text-muted); margin:0; max-width:640px; }
+
+/* ---------- CONTROLS ---------- */
+.controls{ display:flex; align-items:center; gap:14px; margin-bottom:18px; flex-wrap:wrap; }
+.search{ flex:1; min-width:200px; }
+.search input{
+  width:100%; font-family:inherit; font-size:14px;
+  padding:10px 14px; border:1px solid var(--line-strong);
+  border-radius:10px; background:var(--card); color:var(--text);
+}
+.search input:focus{ outline:none; border-color:var(--teal); }
+.chip-group{ display:flex; gap:6px; flex-wrap:wrap; }
+.chip{
+  font-family:inherit; font-size:12.5px; font-weight:600;
+  padding:7px 13px; border-radius:20px;
+  border:1px solid var(--line-strong);
+  background:var(--card); color:var(--text-muted); cursor:pointer;
+  white-space:nowrap;
+}
+.chip.on{ background:var(--navy); border-color:var(--navy); color:#fff; }
+
+/* ---------- CARDS ---------- */
+.card-list{ display:flex; flex-direction:column; gap:12px; }
+.rcard{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+}
+.rcard.flagged{ border-style:dashed; border-color:var(--red); }
+.rcard-header{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+  padding:16px 18px;
+  cursor:pointer;
+  user-select:none;
+}
+.rcard-header:hover{ background:var(--teal-tint); }
+.rcard-title-left{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.rcard-title{ font-size:15px; font-weight:700; color:var(--text); }
+.rcard-title-en{ font-size:12px; color:var(--text-faint); font-weight:500; margin-top:2px; font-family:'Poppins',sans-serif; }
+.status-pill{ font-size:11.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; }
+.status-pill.yn{ background:var(--teal-tint); color:var(--teal); }
+.status-pill.yna{ background:#EEF1F0; color:var(--bluegrey); }
+.status-pill.crit{ background:var(--red-tint); color:var(--red); }
+.status-pill.bonus{ background:var(--gold-tint); color:#8A6A1E; }
+.rcard-side{ display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.pts-num{ font-size:15px; font-weight:800; color:var(--navy); white-space:nowrap; font-family:'Poppins',sans-serif; }
+.chevron{
+  width:20px; height:20px; flex-shrink:0;
+  color:var(--teal);
+  transition:transform .2s ease;
+  display:flex; align-items:center; justify-content:center;
+}
+.rcard.open .chevron{ transform:rotate(180deg); }
+
+.rcard-detail{ display:none; padding:0 18px 16px; }
+.rcard.open .rcard-detail{ display:block; }
+
+.rcard-bullets{ margin:2px 0 0; padding-inline-start:20px; }
+.rcard-bullets li{ font-size:13.5px; color:var(--text-muted); line-height:1.65; margin-bottom:4px; }
+.rcard-bullets li::marker{ color:var(--teal); }
+
+.example-box{
+  margin-top:12px;
+  background:var(--teal-tint);
+  border-inline-start:3px solid var(--teal);
+  border-radius:6px;
+  padding:10px 14px;
+  font-size:13px;
+  color:var(--navy);
+  line-height:1.6;
+}
+.example-box b{ font-weight:800; }
+
+.rcard-meta{ margin-top:12px; display:flex; gap:14px; align-items:center; font-size:12px; color:var(--text-faint); font-weight:600; flex-wrap:wrap; }
+.rcard-meta .dot{ width:3px; height:3px; border-radius:50%; background:var(--text-faint); }
+
+.hint{ font-size:12.5px; color:var(--text-faint); margin-top:22px; }
+
+footer{ margin:44px 0 30px; text-align:center; color:var(--text-faint); font-size:12px; }
+
+@media (max-width:640px){
+  .overview-card{ flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="hero-decor">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="130" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
+        <circle cx="60" cy="60" r="95" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.22"/>
+      </svg>
+    </div>
+    <div class="hero-top">
+      <div class="hero-top-left">
+        <img class="hero-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAAoCAYAAAArIw6WAAACeUlEQVR4nO2bW5aDIAyGY88sZrqaWU5nCbrCdjfOS+1QJBDIhWj5zvFhHA0pPwlBdFrXFYyZAeAWnXsAwNXakc5IdfwCAL/xyamDsFiDk6kX/UgNbAne+m8Ia49mh7/68KLYyGCPdhS97A9hj8MUHDlWAJqw9+fFnEMKrh/bMSv508oC78KljpCSwHNujpUUJHSido7VSl/cOT3lFymaIpJVLdOPZMTO2MUd8OKHJtwKOTmYUhGr0ZktEastqpeIVfEljthPiJAzssQnaqri0uROnfgpYAPsYdS+FjsBnnCLuZ/4RJyKNSb3GEo6kk5ZLWlTy6ZGOt7ZpAgrPeJbhRX94Ux7HJsmwo4HFCclFFZq0T7II71eT94XpmKrh/Ofnoqxe2vuL/oxUvFJCYX1tCw4O1LLHjR9Hyliz1QDYMtHiQ34BWCsYzlwbUr8RtQHSsTeMk5YI7nldnSymmzCUnZ0LPdjsTkI4H+gWe8FS6OxTfl4GX+mYsudFOvdnQmx1TsVYzaodrLtey6eJKr0XOQfmeKgv1AuYsIRiCuuZNGngdZuD1wgyMtGpH5MLrKmwv9r2vGG5LKn+3vF1twB4Dtx3sMci9nJ2SJd/wnCmmyTMWyqCPvV4EgPpEef9ftVObCqfQX6QNld57kq3tDudCn7FnM62dcjCCuNlgCuKnDvwmpEayiA5EMQDpxlT3JV47140voaQcq+5He9paKoqsjyHrGctBm/qiplP7R5Bf3n0k22vUesVzTWxq1CJNs8ynLHC5pRgC17Svck8Z6KPVHqdFePMEfE8pF8V6wmarPtjoilcY/+Dj9UloZis3jNKJ78swlUNYj+ABu79Qagq9U7AAAAAElFTkSuQmCC" alt="rewaa">
+        <div class="hero-eyebrow-divider"></div>
+        <span class="hero-eyebrow">Technical Support Quality — 2026</span>
+      </div>
+      <button class="lang-pill" id="langToggle" type="button">English</button>
+    </div>
+    <h1 id="heroTitle">معايير جودة الدعم الفني</h1>
+    <p class="hero-byline" id="heroByline">إعداد: قسم الجودة – فريق الدعم الفني | رواء</p>
+    <p class="subtitle" id="heroSubtitle">دليلك التفاعلي لمعرفة على ماذا يُقيَّم أداؤك في كل نوع تواصل — مع الوصف والتوجيهات التفصيلية وأمثلة عملية تحت كل معيار.</p>
+    <div class="hero-divider"></div>
+    <div class="hero-stats" id="heroStats"></div>
+  </header>
+
+  <div class="tabs" id="tabsRow"></div>
+
+  <div id="panelsHost"></div>
+
+  <footer>Rewaa Technical Support · QA &amp; Training</footer>
+</div>
+
+<script>
+const RAW = {"tickets": [{"name": "Opening (10)", "points": 10, "criteria": [{"ar": "التواصل الاحترافي والتخصيص في الرد", "en": "Professional & Personalized Response", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["مخاطبة العميل باسمه أو لقبه المفضل", "توضيح أن الموظف اطّلع على طلب العميل قبل تقديم أي رد"], "bullets_en": ["Address the customer by their name or preferred title", "Make clear the request has been reviewed before replying"], "example_ar": "\"أهلاً أستاذ [الاسم]، شكراً لتواصلك معنا بخصوص [الموضوع]، تم الاطلاع على طلبك وراح أساعدك فيه\"", "example_en": "Hello Mr. [Name], thank you for reaching out about [topic] — I've reviewed your request and I'll help you with it."}]}, {"name": "Ticket Understanding (20)", "points": 20, "criteria": [{"ar": "مراجعة سجل التذكرة والاستعداد", "en": "Ticket History Review & Preparation", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["مراجعة الموظف لتفاصيل التذكرة وسجل تواصل العميل السابق (تذاكر / محادثات / مكالمات سابقة) قبل الرد", "الرد بما يعكس فهماً واضحاً لسياق العميل، وعدم تكرار أسئلة سبق للعميل الإجابة عنها"], "bullets_en": ["Review the ticket details and the customer's previous communication history (past tickets / chats / calls) before replying", "Reply in a way that reflects clear understanding of the customer's context, without repeating questions already answered"], "example_ar": null, "example_en": null}, {"ar": "فهم الاستفسار / الطلب بشكل كامل", "en": "Complete Understanding of Customer Request", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["في حال تضمنت التذكرة أكثر من استفسار أو طلب، يجب التأكد من فهم جميع الأجزاء قبل الرد", "عدم افتراض أو تخمين احتياج العميل دون التأكد منه، وطرح سؤال استيضاحي عند الحاجة"], "bullets_en": ["If the ticket contains more than one question or request, make sure all parts are understood before replying", "Don't assume or guess the customer's need without confirming it, and ask a clarifying question when needed"], "example_ar": null, "example_en": null}]}, {"name": "Diagnosis & Resolution (40)", "points": 40, "criteria": [{"ar": "تشخيص المشكلة وتحديد السبب الجذري", "en": "Problem Diagnosis / Root Cause", "pts": 15.0, "ans": "Yes/No", "bullets_ar": ["ربط المشكلة بسياق حساب العميل وإعداداته في النظام لتحديد السبب الحقيقي وليس السطحي فقط", "الاستعانة بالأدوات والسجلات الداخلية قبل تقديم حل نهائي"], "bullets_en": ["Link the issue to the customer's account context and settings in the system to identify the real cause, not just the surface symptom", "Use internal tools and logs before providing a final solution"], "example_ar": null, "example_en": null}, {"ar": "الحل الصحيح والكامل لجميع الطلبات", "en": "Correct & Complete Resolution", "pts": 15.0, "ans": "Yes/No", "bullets_ar": ["تقديم حل صحيح ومطابق لطبيعة المشكلة المحددة بخطوات واضحة وقابلة للتنفيذ", "الإجابة على جميع أجزاء طلب العميل في حال تضمن أكثر من استفسار", "مشاركة رابط مقال من مركز المساعدة عند توفره كمرجع إضافي للعميل"], "bullets_en": ["Provide a correct solution that matches the identified issue, with clear and actionable steps", "Answer every part of the customer's request if it included more than one question", "Share a help center article link when available as an additional reference for the customer"], "example_ar": null, "example_en": null}, {"ar": "التعامل مع اعتراضات / شكاوى العميل", "en": "Handling Customer Objections", "pts": 5.0, "ans": "Yes/No/N/A", "bullets_ar": ["الاستماع لاعتراض أو شكوى العميل حول الحل أو الإجراء المتخذ دون تجاهله", "الرد بهدوء وتقديم تفسير أو حل بديل مناسب يطمئن العميل ويحافظ على العلاقة معه"], "bullets_en": ["Listen to the customer's objection or complaint about the solution or action taken without dismissing it", "Respond calmly and offer a suitable explanation or alternative solution that reassures the customer"], "example_ar": null, "example_en": null}, {"ar": "تحمل المسؤولية والتنسيق الداخلي", "en": "Ownership & Internal Coordination", "pts": 5.0, "ans": "Yes/No/N/A", "bullets_ar": ["يتحمل الموظف مسؤولية التذكرة حتى إغلاقها بدلاً من تحويلها دون متابعة", "عند الحاجة للتنسيق مع قسم آخر، يتم التحويل فوراً مع إبلاغ العميل أن المتابعة جارية داخلياً"], "bullets_en": ["The agent owns the ticket until it's closed instead of transferring it without follow-up", "When coordination with another department is needed, transfer immediately and let the customer know it's being handled internally"], "example_ar": null, "example_en": null}]}, {"name": "Operational Compliance (30)", "points": 30, "criteria": [{"ar": "الالتزام بمدة الاستجابة المعتمدة", "en": "SLA / Response Time Compliance", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["الرد الأول والردود اللاحقة على التذكرة خلال الإطار الزمني المعتمد في سياسة الدعم الفني (حالياً: 24 ساعة كحد أقصى)", "عدم ترك تذاكر العملاء بدون رد لفترة تتجاوز المدة المحددة دون مبرر موثق"], "bullets_en": ["First and follow-up replies to the ticket within the timeframe set by Technical Support policy (currently: 24 hours maximum)", "Don't leave customer tickets without a reply beyond the defined timeframe without a documented reason"], "example_ar": null, "example_en": null}, {"ar": "دقة توثيق التذكرة", "en": "Ticket Logging Accuracy", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["تسجيل جميع التفاصيل اللازمة للتذكرة بدقة واكتمال (نوع المشكلة، الخطوات المتخذة، الحل)", "تصنيف التذكرة بشكل صحيح (Category / Tag) بما يعكس طبيعة المشكلة الفعلية", "توثيق أي تصعيد تم بخصوص التذكرة"], "bullets_en": ["Log all necessary ticket details accurately and completely (issue type, steps taken, resolution)", "Categorize the ticket correctly (Category / Tag) in a way that reflects the actual nature of the issue", "Document any escalation made on the ticket"], "example_ar": null, "example_en": null}, {"ar": "الحالة الصحيحة والإغلاق السليم للتذكرة", "en": "Correct Status & Proper Closure", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["تحديث حالة التذكرة (Status) بما يعكس المرحلة الفعلية فور حدوث أي تحديث", "عدم إغلاق التذكرة إلا بعد التأكد من حل مشكلة العميل، أو الاتفاق معه على خطوة/موعد متابعة واضح", "في حال احتاج الحل وقتاً للتحقق أو المراجعة، توضيح ذلك للعميل قبل الإغلاق"], "bullets_en": ["Update the ticket status to reflect the actual stage as soon as anything changes", "Don't close the ticket until the customer's issue is confirmed resolved, or a clear follow-up step/date has been agreed", "If the resolution needs time to verify or review, explain that to the customer before closing"], "example_ar": null, "example_en": null}]}], "calls": [{"name": "Opening (10)", "points": 10, "criteria": [{"ar": "التواصل الاحترافي والتخصيص", "en": "Professional Communication & Personalization", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["الالتزام بتعريف واضح بالاسم والدور", "مخاطبة العميل باسمه أو لقبه المفضل", "سؤال العميل عن حاله والتأكد أن وقته يسمح قبل البدء"], "bullets_en": ["Give a clear introduction with name and role", "Address the customer by their name or preferred title", "Ask how the customer is doing and confirm they have time before starting"], "example_ar": "\"معك [الاسم] من فريق الدعم الفني في رواء، أتواصل معك بخصوص [الموضوع]، عساك بخير؟ وقتك يسمح؟\"", "example_en": "This is [Name] from Rewaa's Technical Support team, calling about [topic]. Hope you're doing well — do you have a moment?"}]}, {"name": "Case Understanding & Listening (20)", "points": 20, "criteria": [{"ar": "الإعداد والاستعداد قبل المكالمة", "en": "Case Preparation & Readiness", "pts": 5.0, "ans": "Yes/No", "bullets_ar": ["مراجعة الموظف لتفاصيل الكيس/التذكرة وسجل التواصل السابق قبل المكالمة", "الدخول للمكالمة بفهم واضح لموضوع الطلب دون الحاجة لسؤال العميل عن معلومات متوفرة مسبقاً"], "bullets_en": ["Review the case/ticket details and previous communication history before the call", "Enter the call with a clear understanding of the request, without needing to ask the customer for information already available"], "example_ar": null, "example_en": null}, {"ar": "الإنصات الفعال وفهم العميل", "en": "Active Listening & Customer Understanding", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["الاستماع الكامل لشرح العميل للمشكلة دون مقاطعة قبل الرد أو القفز لاستنتاجات", "طرح أسئلة استيضاحية عند الحاجة، وإعادة صياغة احتياج العميل قبل البدء بتقديم الحل"], "bullets_en": ["Listen fully to the customer's explanation of the issue without interrupting or jumping to conclusions", "Ask clarifying questions when needed, and rephrase the customer's need before starting to offer a solution"], "example_ar": null, "example_en": null}, {"ar": "اللباقة وإيجابية الأسلوب", "en": "Courtesy & Positive Tone", "pts": 5.0, "ans": "Yes/No", "bullets_ar": ["الحفاظ على أسلوب مهذب، دافئ ومتعاطف طوال المكالمة", "إشعار العميل بالتقدير والراحة أثناء الحديث بغض النظر عن طبيعة مشكلته"], "bullets_en": ["Maintain a polite, warm, and empathetic tone throughout the call", "Make the customer feel valued and comfortable during the conversation regardless of the nature of the issue"], "example_ar": null, "example_en": null}]}, {"name": "Guidance & Action (45)", "points": 45, "criteria": [{"ar": "تشخيص المشكلة وتحديد السبب الجذري", "en": "Problem Diagnosis / Root Cause", "pts": 15.0, "ans": "Yes/No", "bullets_ar": ["ربط طلب العميل بسياق حسابه وإعداداته في النظام لفهم السبب الحقيقي للمشكلة", "تشخيص المشكلة بدقة قبل الانتقال لمرحلة الحل"], "bullets_en": ["Link the issue to the customer's account context and settings in the system to identify the real cause, not just the surface symptom", "Use internal tools and logs before providing a final solution"], "example_ar": null, "example_en": null}, {"ar": "الحل الصحيح والمناسب", "en": "Correct & Relevant Resolution", "pts": 15.0, "ans": "Yes/No", "bullets_ar": ["تقديم الحل الصحيح والمطابق لطبيعة المشكلة بخطوات واضحة وصحيحة", "التأكد أن العميل نفّذ الحل وأنه فعلاً حل المشكلة قبل إنهاء المكالمة", "عند الربط عن بعد بجهاز العميل: توضيح سبب الحاجة لذلك وأخذ موافقته أولاً"], "bullets_en": ["Provide the correct solution matching the nature of the issue, with clear and accurate steps", "Confirm the customer actually implemented the solution and that it resolved the issue before ending the call", "When remotely connecting to the customer's device: explain why it's needed and get their consent first"], "example_ar": null, "example_en": null}, {"ar": "التعامل مع اعتراضات / شكاوى العميل", "en": "Handling Customer Objections", "pts": 5.0, "ans": "Yes/No/N/A", "bullets_ar": ["الاستماع لاعتراض العميل أو تحفظه على الحل المقترح والرد عليه بهدوء دون جدال", "تقديم تفسير أو حل بديل مناسب يطمئن العميل ويحافظ على علاقة إيجابية معه"], "bullets_en": ["Listen to the customer's objection or reservation about the proposed solution and respond calmly without arguing", "Offer a suitable explanation or alternative solution that reassures the customer and maintains a positive relationship"], "example_ar": null, "example_en": null}, {"ar": "الالتزام ببروتوكول الانتظار أو التحويل", "en": "Hold / Transfer Protocol Adherence", "pts": 5.0, "ans": "Yes/No/N/A", "bullets_ar": ["توضيح سبب وضع العميل على الانتظار أو تحويله لقسم/زميل آخر، وإبلاغه بوقت الانتظار المتوقع", "في حال كان القسم المحوَّل إليه غير متاح أو يبدأ دوامه لاحقاً، إبلاغ العميل بوقت الرد المتوقع وتقديم بدائل عند الحاجة"], "bullets_en": ["Explain the reason for placing the customer on hold or transferring them to another department/colleague, and inform them of the expected wait time", "If the receiving department is unavailable or starts their shift later, inform the customer of the expected response time and offer alternatives when needed"], "example_ar": null, "example_en": null}, {"ar": "تحمل المسؤولية وإدارة الحالة", "en": "Ownership & Case Management", "pts": 5.0, "ans": "Yes/No", "bullets_ar": ["يتحمل الموظف مسؤولية الكيس حتى إغلاقه بدل تحويله دون متابعة", "التنسيق الداخلي أو إعادة التوجيه للقسم الصحيح عند الحاجة دون تأخير"], "bullets_en": ["The agent owns the case until it's closed instead of transferring it without follow-up", "Coordinate internally or redirect to the correct department when needed, without delay"], "example_ar": null, "example_en": null}]}, {"name": "Closure & Compliance (25)", "points": 25, "criteria": [{"ar": "إغلاق التواصل وضبط التوقعات", "en": "Contact Closure & Expectation Setting", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["التأكد أن العميل لا يحتاج أي خدمة إضافية وأنه راضٍ عن الحل المقدم قبل إنهاء المكالمة", "في حال احتاج الأمر متابعة أو وقتاً إضافياً للتحقق، توضيح ذلك للعميل وتحديد موعد فعلي للمتابعة"], "bullets_en": ["Confirm the customer doesn't need any additional service and is satisfied with the solution before ending the call", "If follow-up or additional verification time is needed, explain that to the customer and set an actual follow-up date"], "example_ar": null, "example_en": null}, {"ar": "جودة التوثيق بعد المكالمة", "en": "Post-Call Documentation Quality", "pts": 5.0, "ans": "Yes/No/N/A", "bullets_ar": ["تسجيل ملاحظات المكالمة وتحديث حالة التذكرة/الكيس مباشرة بعد المكالمة", "إضافة ملاحظة كتوثيق أي تصعيد تم"], "bullets_en": ["Log call notes and update the ticket/case status immediately after the call", "Add a note documenting any escalation made"], "example_ar": null, "example_en": null}, {"ar": "تحديث الحالة والالتزام بإجراءات التصعيد", "en": "Case Status & Escalation Compliance", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["التعامل الفوري مع أي كيس جديد أو عاجل دون تأخير", "تصعيد الحالة للمدير المباشر أو القسم المختص عند الحاجة دون تأخير"], "bullets_en": ["Handle any new or urgent case immediately without delay", "Escalate to the direct manager or relevant department when needed without delay"], "example_ar": null, "example_en": null}]}], "chat": [{"name": "Opening (10)", "points": 10, "criteria": [{"ar": "الرد الأول الواضح والمرتبط بطلب العميل", "en": "Clear & Relevant First Response", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["الرد الأول على رسالة العميل مرتبط بطلبه أو استفساره مباشرة وبوضوح", "عدم الرد بردود عامة أو جاهزة غير مرتبطة بسؤال العميل"], "bullets_en": ["The first reply to the customer's message is directly and clearly related to their request or inquiry", "Avoid generic or canned replies unrelated to the customer's question"], "example_ar": null, "example_en": null}]}, {"name": "Responsiveness (10)", "points": 10, "criteria": [{"ar": "الرد خلال المدة المعتمدة", "en": "Response Within Policy Time", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["الرد الأول على رسالة العميل خلال المدة المعتمدة في سياسة الدعم الفني (حالياً: 30 ثانية كحد أقصى)", "عدم ترك رسائل العملاء بدون رد لفترة تتجاوز المدة المحددة"], "bullets_en": ["First reply to the customer's message within the timeframe set by Technical Support policy (currently: 30 seconds maximum)", "Don't leave customer messages without a reply beyond the defined timeframe"], "example_ar": null, "example_en": null}]}, {"name": "Understanding & Communication (25)", "points": 25, "criteria": [{"ar": "الإنصات الفعال وفهم رسالة العميل", "en": "Active Listening & Understanding Customer Message", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["قراءة رسالة العميل بالكامل وفهم طلبه الفعلي دون القفز لاستنتاجات أو افتراض احتياج لم يذكره", "طرح سؤال استيضاحي عند غموض الطلب بدل الرد بحل غير مرتبط، وإعادة صياغة الطلب عند الحاجة للتأكد من الفهم"], "bullets_en": ["Read the customer's message fully and understand their actual request without jumping to conclusions or assuming an unstated need", "Ask a clarifying question when the request is unclear instead of replying with an unrelated solution, and rephrase the request to confirm understanding when needed"], "example_ar": null, "example_en": null}, {"ar": "الكفاءة اللغوية والوضوح", "en": "Language Proficiency & Clarity", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["كتابة واضحة، مختصرة، وسليمة إملائياً ونحوياً", "تجنب الأخطاء التي قد تسبب سوء فهم أو تُظهر الموظف بمظهر غير احترافي"], "bullets_en": ["Clear, concise writing, free of spelling and grammar errors", "Avoid mistakes that could cause misunderstanding or make the agent appear unprofessional"], "example_ar": null, "example_en": null}, {"ar": "التخصيص واللباقة في التواصل", "en": "Personalization & Courtesy", "pts": 5.0, "ans": "Yes/No", "bullets_ar": ["مخاطبة العميل بإحترام أو باسمه أو لقبه المفضل", "الحفاظ على أسلوب مهذب ودافئ طوال المحادثة بغض النظر عن طبيعة المشكلة"], "bullets_en": ["Address the customer respectfully or by their name or preferred title", "Maintain a polite and warm tone throughout the conversation regardless of the nature of the issue"], "example_ar": null, "example_en": null}]}, {"name": "Process Adherence (35)", "points": 35, "criteria": [{"ar": "استخدام الردود الجاهزة (الماكرو)", "en": "Use of Macros / Canned Responses", "pts": 5.0, "ans": "Yes/No", "bullets_ar": ["استخدام الردود الجاهزة المعتمدة عند توفر رد مناسب لطبيعة طلب العميل، لاختصار الوقت ومساعدته بالحصول على التفاصيل بدقة", "تخصيص الماكرو بما يتناسب مع سياق العميل وعدم إرساله كنص جامد دون ربطه برسالته"], "bullets_en": ["Use approved canned responses when a suitable reply is available for the customer's request, to save time and provide accurate details", "Customize the macro to fit the customer's context instead of sending it as rigid text unrelated to their message"], "example_ar": null, "example_en": null}, {"ar": "التحويل الصحيح للمحادثة", "en": "Correct Chat Routing", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["تحويل المحادثة للفريق أو القسم المختص المناسب لطبيعة طلب العميل", "عدم تحويل المحادثة دون سبب واضح أو لجهة غير مختصة"], "bullets_en": ["Transfer the conversation to the team or department best suited to the customer's request", "Don't transfer the conversation without a clear reason or to an unrelated department"], "example_ar": null, "example_en": null}, {"ar": "إضافة كومنت / نوت واضح", "en": "Clear Internal Comment / Note", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["إضافة كومنت/نوت داخلي يلخّص المحادثة والإجراء المطلوب", "كتابة الملاحظة بشكل واضح ومفهوم لأي موظف يستلم المحادثة لاحقاً", "عدم ترك المحادثة أو التحويل بدون أي توثيق داخلي"], "bullets_en": ["Add an internal comment/note summarizing the conversation and the required action", "Write the note clearly enough for any agent who picks it up later to understand", "Don't leave a conversation or transfer without any internal documentation"], "example_ar": null, "example_en": null}, {"ar": "الإغلاق الصحيح للمحادثة حسب الحاجة للمتابعة", "en": "Proper Conversation Closure", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["إبقاء المحادثة مفتوحة أثناء التفاعل المباشر مع العميل خلال الدوام، مع إضافة النوت أول بأول", "في حال اتفق العميل على الرد لاحقاً (حتى خارج الدوام): إضافة نوت واضح يشرح المطلوب، ثم إغلاق المحادثة وتحويلها للقسم المختص مغلقة", "ترك محادثات مفتوحة بدون داعٍ يصعّب على الفريق المتابع متابعة الأولويات الفعلية"], "bullets_en": ["Keep the conversation open while actively interacting with the customer during the shift, adding notes as you go", "If the customer agreed to reply later (even outside working hours): add a clear note explaining what's needed, then close the conversation and transfer it closed to the relevant department", "Leaving conversations open unnecessarily makes it harder for the following team to track actual priorities"], "example_ar": "العميل قال إنه سيشغّل الأجهزة بالليل ويحتاج دعم بالطابعات — نوت: \"العميل سيرسل بالليل بعد تشغيل الأجهزة ويحتاج دعمكم بالطابعات\" ثم إغلاق المحادثة", "example_en": "The customer said they'll turn on the devices at night and will need printer support — note: \"Customer will message at night after turning on the devices and will need printer support\" then close the conversation"}]}, {"name": "Problem Resolution (20)", "points": 20, "criteria": [{"ar": "حل مشكلة العميل والالتزام بوعد المتابعة", "en": "Problem Resolved & Follow-up", "pts": 10.0, "ans": "Yes/No", "bullets_ar": ["تم حل مشكلة العميل التقنية أو الوصول لإجابة واضحة بخصوص طلبه", "الوفاء بأي وعد بالتواصل أو المتابعة تم الاتفاق عليه مع العميل"], "bullets_en": ["The customer's technical issue was resolved, or a clear answer to their request was reached", "Honor any follow-up or contact promise made to the customer"], "example_ar": null, "example_en": null}, {"ar": "التعامل مع اعتراضات / شكاوى العميل", "en": "Handling Customer Objections", "pts": 5.0, "ans": "Yes/No/N/A", "bullets_ar": ["الاستماع لاعتراض العميل على الحل المقترح دون تجاهله أو إغلاق المحادثة دون معالجته", "الرد بهدوء وتقديم توضيح أو حل بديل يطمئن العميل"], "bullets_en": ["Listen to the customer's objection to the proposed solution without dismissing it or closing the conversation without addressing it", "Respond calmly and offer clarification or an alternative solution that reassures the customer"], "example_ar": null, "example_en": null}, {"ar": "مشاركة مصادر إضافية", "en": "Sharing Additional Resources", "pts": 5.0, "ans": "Yes/No/N/A", "bullets_ar": ["مشاركة رابط مقال من مركز المساعدة أو مصدر مفيد آخر عند توفره لتعزيز فهم العميل للحل"], "bullets_en": ["Share a help center article link or another useful resource when available to reinforce the customer's understanding of the solution"], "example_ar": null, "example_en": null}]}], "critical": [{"ar": "معلومة خاطئة أو غير موثقة", "en": "Incorrect or Unverified Information", "bullets_ar": ["تزويد العميل بمعلومة غير دقيقة أو غير موثقة (عن المنتج/ الميزة/ السياسة/....) دون التأكد منها من مصدر معتمد", "خطأ حرج يصفر تقييم التفاعل بالكامل بغض النظر عن باقي المعايير", "في حال تكرر نفس الخطأ 3 مرات في اليوم، يحصل الموظف على تقييم صفر لكامل يومه بغض النظر عن باقي العوامل"], "bullets_en": ["Providing the customer with inaccurate or unverified information (about the product/feature/policy/etc.) without confirming it from an approved source", "A critical error that zeroes out the entire interaction score regardless of other criteria", "If the same error repeats 3 times in one day, the agent gets a zero score for the entire day regardless of other factors"], "example_ar": null, "example_en": null, "pts": 0.0}, {"ar": "الإخلال ببروتوكولات الأمان والخصوصية", "en": "Security & Privacy Protocol Violation", "bullets_ar": ["عدم طرح أسئلة التحقق المطلوبة قبل الإفصاح عن معلومات حساسة أو تنفيذ إجراءات على حساب العميل", "تنفيذ إجراءات على جهاز العميل (عند الربط عن بعد) دون توضيح الحاجة لذلك وأخذ موافقته", "خطأ حرج يصفر تقييم التفاعل بالكامل بغض النظر عن باقي المعايير"], "bullets_en": ["Not asking the required verification questions before disclosing sensitive information or performing actions on the customer's account", "Performing actions on the customer's device (during remote access) without explaining the need and obtaining consent", "A critical error that zeroes out the entire interaction score regardless of other criteria"], "example_ar": null, "example_en": null, "pts": 0.0}, {"ar": "سلوك فظ أو غير احترافي", "en": "Rude or Unprofessional Behavior", "bullets_ar": ["استخدام نبرة أو ألفاظ غير لائقة، تجاهل العميل، إظهار الانزعاج منه أو الجدال معه", "ملامة العميل حتى لو كان مخطئاً", "خطأ حرج يصفر تقييم التفاعل بالكامل بغض النظر عن باقي المعايير"], "bullets_en": ["Using inappropriate tone or language, ignoring the customer, showing annoyance, or arguing with them", "Blaming the customer even if they were at fault", "A critical error that zeroes out the entire interaction score regardless of other criteria"], "example_ar": null, "example_en": null, "pts": 0.0}, {"ar": "تأخير متعمد في المتابعة أو الإغلاق لتجنب المعالجة", "en": "Intentional Delayed Follow-up / Avoidance Closure", "bullets_ar": ["إغلاق التذكرة/المحادثة أو تأجيل الرد لتجنب التعامل الفوري مع طلب يمكن حله من أول تواصل", "الرد على العميل بعد تأخير كبير غير مبرر أو عدم الرد إطلاقاً", "خطأ حرج يصفر تقييم التفاعل بالكامل بغض النظر عن باقي المعايير"], "bullets_en": ["Closing the ticket/conversation or delaying a reply to avoid handling a request that could be resolved on first contact", "Replying to the customer after a significant unjustified delay, or not replying at all", "A critical error that zeroes out the entire interaction score regardless of other criteria"], "example_ar": null, "example_en": null, "pts": 0.0}, {"ar": "تأخر الاستجابة للحالات العاجلة أو المصعدة", "en": "Delayed Response to Urgent / Escalated Cases", "bullets_ar": ["عدم التصرف الفوري مع تذكرة/كيس جديد أو عاجل يستوجب تدخلاً سريعاً وفق السياسة المعتمدة", "خطأ حرج يصفر تقييم التفاعل بالكامل بغض النظر عن باقي المعايير"], "bullets_en": ["Not acting immediately on a new or urgent ticket/case that requires quick intervention per approved policy", "A critical error that zeroes out the entire interaction score regardless of other criteria"], "example_ar": null, "example_en": null, "pts": 0.0}, {"ar": "إهمال في تسليم أو استلام العميل بين الموظفين", "en": "Careless Handover / Takeover Between Agents", "bullets_ar": ["ترك الدوام دون توثيق تفصيلي يشرح مشكلة العميل والمرحلة التي وصل لها الموظف السابق", "عدم مراجعة سياق الحالة عند استلام عميل من موظف آخر، أو عدم الاعتذار عند الحاجة لانتقال غير سلس", "خطأ حرج يصفر تقييم التفاعل بالكامل بغض النظر عن باقي المعايير"], "bullets_en": ["Ending a shift without detailed documentation explaining the customer's issue and the stage the previous agent reached", "Not reviewing the case context when taking over a customer from another agent, or not apologizing when a handover isn't smooth", "A critical error that zeroes out the entire interaction score regardless of other criteria"], "example_ar": null, "example_en": null, "pts": 0.0}], "bonus": [{"ar": "الاستباق في اكتشاف مشكلة أو خطر تقني لدى العميل", "en": "Proactive Technical Risk / Issue Identification", "bullets_ar": ["ملاحظة مؤشر خطر أو مشكلة تقنية محتملة لدى العميل دون أن يطلبها أو يشتكي منها", "التصرف بشأنها استباقياً", "نقاط إضافية على الأداء"], "bullets_en": ["Noticing a risk indicator or a potential technical issue for the customer without them requesting it or complaining", "Acting on it proactively", "Extra points on performance"], "example_ar": null, "example_en": null, "pts": 5.0}, {"ar": "حل المشكلة من أول تواصل", "en": "First Contact Resolution", "bullets_ar": ["نجاح الموظف في حل مشكلة العميل بالكامل خلال أول تفاعل دون الحاجة لتذكرة/مكالمة/محادثة إضافية", "نقاط إضافية على الأداء"], "bullets_en": ["Successfully resolving the customer's issue completely during the first interaction without needing an additional ticket/call/conversation", "Extra points on performance"], "example_ar": null, "example_en": null, "pts": 5.0}, {"ar": "متابعة استباقية تتجاوز المطلوب", "en": "Proactive Follow-up Beyond Requirement", "bullets_ar": ["متابعة إضافية أو مبادرة من الموظف تتجاوز الحد الأدنى المطلوب (مثال: التأكد من استقرار الحل بعد يوم دون طلب من العميل)", "نقاط إضافية على الأداء"], "bullets_en": ["Additional follow-up or initiative by the agent beyond the minimum required (e.g., confirming the solution is stable a day later without being asked)", "Extra points on performance"], "example_ar": null, "example_en": null, "pts": 3.0}, {"ar": "اكتشاف فرصة لتحسين استخدام العميل", "en": "Customer Usage Improvement Opportunity", "bullets_ar": ["ملاحظة ميزة غير مستغلة أو استخدام قابل للتحسين ومشاركته مع العميل بشكل عملي", "نقاط إضافية على الأداء"], "bullets_en": ["Noticing an underused feature or an improvable usage pattern and sharing it with the customer in a practical way", "Extra points on performance"], "example_ar": null, "example_en": null, "pts": 2.0}]};
+const META_AR = {"tickets": {"tag": "TIX", "icon": "🎫", "title": "Tickets | التذاكر", "desc": "معايير تقييم التذاكر عبر Zoho CRM. إجمالي النقاط = 100.", "ring_l": "نقطة"}, "calls": {"tag": "CALL", "icon": "📞", "title": "Calls | المكالمات", "desc": "معايير تقييم المكالمات الهاتفية. إجمالي النقاط = 100.", "ring_l": "نقطة"}, "chat": {"tag": "CHAT", "icon": "💬", "title": "Chat Open CX | المحادثات", "desc": "معايير تقييم المحادثات عبر Open.cx. إجمالي النقاط = 100.", "ring_l": "نقطة"}, "critical": {"tag": "CRIT", "icon": "⛔", "title": "Critical Errors | أخطاء حرجة", "desc": "تنطبق على جميع أنواع التواصل. أي خطأ من هذه الأخطاء يُصفّر تقييم التفاعل بالكامل بغض النظر عن باقي المعايير.", "ring_l": "أخطاء"}, "bonus": {"tag": "BONUS", "icon": "⭐", "title": "Bonus | نقاط إضافية", "desc": "تنطبق على جميع أنواع التواصل. تُضاف عند تجاوز الحد الأدنى المطلوب في الأداء، بحد أقصى +15 نقطة.", "ring_l": "حد أقصى"}};
+const META_EN = {"tickets": {"tag": "TIX", "icon": "🎫", "title": "Tickets", "desc": "Criteria for evaluating tickets via Zoho CRM. Total points = 100.", "ring_l": "points"}, "calls": {"tag": "CALL", "icon": "📞", "title": "Calls", "desc": "Criteria for evaluating phone calls. Total points = 100.", "ring_l": "points"}, "chat": {"tag": "CHAT", "icon": "💬", "title": "Chat Open CX", "desc": "Criteria for evaluating conversations via Open.cx. Total points = 100.", "ring_l": "points"}, "critical": {"tag": "CRIT", "icon": "⛔", "title": "Critical Errors", "desc": "Applies to all interaction types. Any of these errors zeroes out the entire interaction score regardless of other criteria.", "ring_l": "errors"}, "bonus": {"tag": "BONUS", "icon": "⭐", "title": "Bonus", "desc": "Applies to all interaction types. Added when performance exceeds the minimum requirement, up to a maximum of +15 points.", "ring_l": "max bonus"}};
+const UI = {"ar": {"heroTitle": "معايير جودة الدعم الفني", "heroByline": "إعداد: قسم الجودة – فريق الدعم الفني | رواء", "heroSubtitle": "دليلك التفاعلي لمعرفة على ماذا يُقيَّم أداؤك في كل نوع تواصل — مع الوصف والتوجيهات التفصيلية وأمثلة عملية تحت كل معيار.", "statChannels": "قنوات تواصل", "statPoints": "نقطة لكل قناة", "statCriteria": "معيار مُقيَّم", "statCritical": "أخطاء حرجة", "statBonus": "حد أقصى للبونص", "searchMain": "ابحث عن معيار...", "searchFlat": "ابحث...", "chipAll": "الكل", "noResultsFlat": "لا توجد نتائج مطابقة.", "noResultsMain": "لا توجد معايير مطابقة لبحثك.", "zeroesScore": "يصفّر السكور", "exampleLabel": "مثال: ", "toggleLabel": "English", "ringMax": "حد أقصى"}, "en": {"heroTitle": "Technical Support Quality Criteria", "heroByline": "Prepared by: Quality Team – Technical Support | rewaa", "heroSubtitle": "Your interactive guide to what your performance is evaluated on for each interaction type — with detailed guidance and practical examples under every criterion.", "statChannels": "Channels", "statPoints": "Points per channel", "statCriteria": "Criteria scored", "statCritical": "Critical errors", "statBonus": "Max bonus", "searchMain": "Search for a criterion...", "searchFlat": "Search...", "chipAll": "All", "noResultsFlat": "No matching results.", "noResultsMain": "No criteria match your search.", "zeroesScore": "Zeroes score", "exampleLabel": "Example: ", "toggleLabel": "العربية", "ringMax": "max"}};
+const ORDER = ["tickets","calls","chat","critical","bonus"];
+
+let lang = "ar";
+
+function META(){ return lang === "ar" ? META_AR : META_EN; }
+function T(){ return UI[lang]; }
+
+function flatten(sections){
+  return sections.flatMap(sec => sec.criteria.map(c => ({...c, sectionName: sec.name, sectionPoints: sec.points})));
+}
+
+function formatPoints(n){
+  n = Number(n);
+  if(lang === "en"){
+    return n === 1 ? "1 point" : `${n} points`;
+  }
+  if(n === 1) return "نقطة واحدة";
+  if(n === 2) return "نقطتان";
+  if(n >= 3 && n <= 10) return `${n} نقاط`;
+  return `${n} نقطة`;
+}
+
+const CHEVRON_SVG = `<svg class="chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+function primaryTitle(c){ return lang === "ar" ? c.ar : c.en; }
+function secondaryTitle(c){ return lang === "ar" ? c.en : c.ar; }
+function bulletsFor(c){ return lang === "ar" ? c.bullets_ar : c.bullets_en; }
+function exampleFor(c){ return lang === "ar" ? c.example_ar : c.example_en; }
+
+function bulletsHtml(bullets){
+  if(!bullets || !bullets.length) return "";
+  return `<ul class="rcard-bullets">${bullets.map(b => `<li>${b}</li>`).join("")}</ul>`;
+}
+
+function exampleHtml(example){
+  if(!example) return "";
+  return `<div class="example-box"><b>${T().exampleLabel}</b>${example}</div>`;
+}
+
+function wireCardToggles(host){
+  host.querySelectorAll(".rcard").forEach(card=>{
+    const header = card.querySelector(".rcard-header");
+    if(header) header.addEventListener("click", ()=> card.classList.toggle("open"));
+  });
+}
+
+let activeTab = "tickets";
+const filterState = {};
+ORDER.forEach(key => filterState[key] = { section:"all", search:"" });
+
+function renderTabs(){
+  const host = document.getElementById("tabsRow");
+  const m = META();
+  host.innerHTML = ORDER.map(key => {
+    const d = m[key];
+    return `<button class="tabbtn ${activeTab===key?'on':''}" data-tab="${key}"><span class="ic">${d.icon}</span>${tabLabel(d)}</button>`;
+  }).join("");
+  host.querySelectorAll(".tabbtn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      activeTab = btn.dataset.tab;
+      renderTabs();
+      renderPanels();
+    });
+  });
+}
+
+function ringClass(key){
+  if(key === "critical") return "ring crit";
+  if(key === "bonus") return "ring bonus";
+  return "ring";
+}
+
+function tabLabel(d){
+  if(!d.title.includes(" | ")) return d.title;
+  const parts = d.title.split(" | ");
+  return lang === "ar" ? parts[1] : parts[0];
+}
+
+function renderPanels(){
+  const host = document.getElementById("panelsHost");
+  const m = META()[activeTab];
+  const st = filterState[activeTab];
+  const t = T();
+  const ringN = activeTab === "bonus" ? "+15" : (activeTab === "critical" ? String(RAW.critical.length) : "100");
+
+  const overviewHtml = `
+    <div class="overview-card">
+      <div class="${ringClass(activeTab)}"><div class="n">${ringN}</div><div class="l">${m.ring_l}</div></div>
+      <div class="overview-main">
+        <div class="overview-title"><span class="ic">${m.icon}</span><h2>${tabLabel(m)}</h2></div>
+        <p class="overview-desc">${m.desc}</p>
+      </div>
+    </div>
+  `;
+
+  if(activeTab === "critical" || activeTab === "bonus"){
+    const isCritical = activeTab === "critical";
+    const q = st.search.trim().toLowerCase();
+    const items = RAW[activeTab].filter(it => !q || (it.ar+" "+it.en+" "+(bulletsFor(it)||[]).join(" ")).toLowerCase().includes(q));
+    host.innerHTML = overviewHtml + `
+      <div class="controls">
+        <div class="search"><input type="text" id="searchInput" placeholder="${t.searchFlat}" value="${st.search}"></div>
+      </div>
+      <div class="card-list">
+        ${items.map(it => `
+          <div class="rcard ${isCritical?'flagged':''}">
+            <div class="rcard-header">
+              <div class="rcard-title-left">
+                <span class="rcard-title">${primaryTitle(it)}</span>
+                <span class="status-pill ${isCritical?'crit':'bonus'}">${isCritical ? t.zeroesScore : ('+'+it.pts)}</span>
+              </div>
+              <div class="rcard-side">${CHEVRON_SVG}</div>
+            </div>
+            <div class="rcard-detail">
+              <div class="rcard-title-en">${secondaryTitle(it)}</div>
+              ${bulletsHtml(bulletsFor(it))}
+              ${exampleHtml(exampleFor(it))}
+            </div>
+          </div>
+        `).join("") || `<p class="hint">${t.noResultsFlat}</p>`}
+      </div>
+    `;
+    wireCardToggles(host);
+  } else {
+    const flat = flatten(RAW[activeTab]);
+    const bySection = {};
+    flat.forEach(c => { bySection[c.sectionName] = (bySection[c.sectionName]||0) + 1; });
+    const q = st.search.trim().toLowerCase();
+    const items = flat.filter(c=>{
+      const sectionOk = st.section === "all" || c.sectionName === st.section;
+      const searchOk = !q || (c.ar+" "+c.en+" "+(bulletsFor(c)||[]).join(" ")).toLowerCase().includes(q);
+      return sectionOk && searchOk;
+    });
+    const chipDefs = [["all", t.chipAll, flat.length], ...RAW[activeTab].map(s => [s.name, s.name, bySection[s.name] || 0])];
+
+    host.innerHTML = overviewHtml + `
+      <div class="controls">
+        <div class="search"><input type="text" id="searchInput" placeholder="${t.searchMain}" value="${st.search}"></div>
+        <div class="chip-group" id="chipGroup">
+          ${chipDefs.map(([k,l,n]) => `<button class="chip ${st.section===k?'on':''}" data-section="${k}">${l} · ${n}</button>`).join("")}
+        </div>
+      </div>
+      <div class="card-list">
+        ${items.map(c => `
+          <div class="rcard">
+            <div class="rcard-header">
+              <div class="rcard-title-left">
+                <span class="rcard-title">${primaryTitle(c)}</span>
+                <span class="status-pill ${c.ans==='Yes/No'?'yn':'yna'}">${c.ans}</span>
+              </div>
+              <div class="rcard-side">
+                <div class="pts-num">${formatPoints(c.pts)}</div>
+                ${CHEVRON_SVG}
+              </div>
+            </div>
+            <div class="rcard-detail">
+              <div class="rcard-title-en">${secondaryTitle(c)}</div>
+              ${bulletsHtml(bulletsFor(c))}
+              ${exampleHtml(exampleFor(c))}
+              <div class="rcard-meta"><span>${c.sectionName}</span><span class="dot"></span><span>${tabLabel(m)}</span></div>
+            </div>
+          </div>
+        `).join("") || `<p class="hint">${t.noResultsMain}</p>`}
+      </div>
+    `;
+    wireCardToggles(host);
+    document.getElementById("chipGroup").querySelectorAll(".chip").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        st.section = btn.dataset.section;
+        renderPanels();
+      });
+    });
+  }
+
+  const searchInput = document.getElementById("searchInput");
+  searchInput.addEventListener("input", e=>{
+    st.search = e.target.value;
+    renderPanels();
+    const input = document.getElementById("searchInput");
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
+  });
+}
+
+function renderHeroStats(){
+  const mainCriteriaCount = ["tickets","calls","chat"].reduce((sum,k)=> sum + flatten(RAW[k]).length, 0);
+  const t = T();
+  document.getElementById("heroStats").innerHTML = `
+    <div class="hstat"><div class="n">3</div><div class="l">${t.statChannels}</div></div>
+    <div class="hstat"><div class="n">100</div><div class="l">${t.statPoints}</div></div>
+    <div class="hstat"><div class="n">${mainCriteriaCount}</div><div class="l">${t.statCriteria}</div></div>
+    <div class="hstat"><div class="n">${RAW.critical.length}</div><div class="l">${t.statCritical}</div></div>
+    <div class="hstat"><div class="n">+15</div><div class="l">${t.statBonus}</div></div>
+  `;
+}
+
+function applyStaticText(){
+  const t = T();
+  document.getElementById("heroTitle").textContent = t.heroTitle;
+  document.getElementById("heroByline").textContent = t.heroByline;
+  document.getElementById("heroSubtitle").textContent = t.heroSubtitle;
+  document.getElementById("langToggle").textContent = t.toggleLabel;
+  document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+  document.documentElement.setAttribute("lang", lang === "ar" ? "ar" : "en");
+}
+
+document.getElementById("langToggle").addEventListener("click", ()=>{
+  lang = lang === "ar" ? "en" : "ar";
+  applyStaticText();
+  renderHeroStats();
+  renderTabs();
+  renderPanels();
+});
+
+applyStaticText();
+renderHeroStats();
+renderTabs();
+renderPanels();
+</script>
+</body>
+</html>
